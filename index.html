@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>GE2020 Sengkang GRC Results</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="images/favicon-small.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="images/favicon-large.png" sizes="32x32">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Load d3.js -->
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.5/turf.min.js"></script>
+	<script src="https://d3js.org/d3.v4.js"></script>
+	
+
+</head>
+<body>
+	<div class="container-fluid py-5 px-5">
+		<div class="row">
+			<div class="col-12 col-lg-8">
+				<div class="row">
+					<div class="col-12 padding-remove">
+						<div class="row">
+							<div class="col-12 mb-4">
+								<h1>GE2020</h1>
+								<p><b>Sengkang GRC Results</b></p>
+							</div>
+							<div class="col-12 mb-4">
+								<div id="results-bar"></div>
+								<table class="table table-no-margin">
+									    <tbody>
+									      <tr>
+									        <td class="wp-label"><b>WP</b></td>
+									        <td class="text-right">52.12%</td>
+									      </tr>
+									      <tr>
+									        <td class="pap-label"><b>PAP</b></td>
+									        <td class="text-right">47.88%</td>
+									      </tr>
+									    </tbody>
+					 				 </table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row main">
+					<div class="col-12">
+					<div class="row">
+					<div class="col-12 col-xs-12 col-sm-12 col-md-12 col-xl-3 order-xl-2 ml-auto mr-auto mb-4 p-0 white-block">
+						<div class="ml-1 mr-1 p-4">
+							<div class="row">
+								<div class="col-12 col-sm-6 col-xl-12">
+									<h6 class="text-center pb-3 d-none d-xl-block">Sample Count</h6>
+									<div id="vote-pie"></div>
+								</div>
+								<div class="col-12 col-sm-6 col-xl-12">
+									<h4 class="d-xl-none pb-3">Sample Count</h4>
+									<table class="table">
+									    <tbody>
+									      <tr>
+									        <td class="wp-label"><b>WP</b></td>
+									        <td class="text-right">60,217</td>
+									      </tr>
+									      <tr>
+									        <td class="pap-label"><b>PAP</b></td>
+									        <td class="text-right">55,319</td>
+									      </tr>
+									    </tbody>
+					 				 </table>
+					 				 <table class="table mt-4 d-xl-none">
+									    <tbody>
+									      <tr>
+									        <td><b>Voters</b></td>
+									        <td class="text-right">120,100</td>
+									      </tr>
+									      <tr>
+									        <td><b>Rejected votes</b></td>
+									        <td class="text-right">1,194</td>
+									      </tr>
+									       <tr>
+									        <td><b>Did not vote</b></td>
+									        <td class="text-right">3,370</td>
+									      </tr>
+									    </tbody>
+					 				 </table>
+								</div>
+							</div>
+					</div>
+					</div>
+					<div class="col-12 col-xs-5 col-sm-5 col-md-5 col-xl-4 order-xl-1 mb-4 p-0 white-block">
+						<div class="ml-1 mr-1 pt-4 pb-4 pl-4 pr-0">
+						<div class="row pb-3">
+							<div class="col-3 col-sm-4 col-md-3">
+								<img src="images/WP_logo.png" alt="WP logo">
+							</div>
+							<div class="col-9 col-sm-8 col-md-9 my-auto">
+								<h4>WP</h4>
+							</div>
+						</div>
+						<div class="row pb-2">
+							<div class="popup" id="popup-1">
+							<div class="overlay"></div>
+								<div class="content">
+									<div class="close-btn" onclick="togglePopup()">&times;</div>
+									<h2>He Ting Ru</h2>
+									<p>test</p>
+									<div id="candidate-profile1"></div>
+								</div>
+							
+							</div>
+							<div class="col-3 col-sm-4 col-md-3">
+								<img class="rounded-circle" src="images/He-Ting-Ru.jpg" alt="He Ting Ru">
+							</div>
+							<div class="col-9 col-sm-8 col-md-9 my-auto">
+								<p>He Ting Ru</p>
+							</div>
+						</div>
+						<div class="row pb-2">
+							<div class="col-3 col-sm-4 col-md-3">
+								<img class="rounded-circle" src="images/Chua-Kheng-Wee.jpg" alt="Louis Chuau">
+							</div>
+							<div class="col-9 col-sm-8 col-md-9 my-auto">
+								<p>Louis Chua</p>
+							</div>
+						</div>
+						<div class="row pb-2">
+							<div class="col-3 col-sm-4 col-md-3">
+								<img class="rounded-circle" src="images/Raeesah-Khan.jpg" alt="Raeesah Khan">
+							</div>
+							<div class="col-9 col-sm-8 col-md-9 my-auto">
+								<p>Raeesah Khan</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3 col-sm-4 col-md-3">
+								<img class="rounded-circle" src="images/Jamus-Lim.jpg" alt="Jamus Lim">
+							</div>
+							<div class="col-9 col-sm-8 col-md-9 my-auto">
+								<p>Jamus Lim</p>
+							</div>
+						</div>
+					</div>
+					</div>
+					<div class="col-12 col-xs-5 offset-xs-2 col-sm-5 offset-sm-2 col-md-5 offset-md-2 col-xl-4 offset-xl-0 order-xl-3 mb-4 p-0 white-block">
+						<div class="ml-1 mr-1 pt-4 pb-4 pl-4 pr-0">
+						<div class="row pb-3">
+							<div class="col-3 col-sm-4 col-md-3">
+								<img src="images/PAP_logo.png" alt="PAP logo">
+							</div>
+							<div class="col-9 col-sm-8 col-md-9 my-auto">
+								<h4>PAP</h4>
+							</div>
+						</div>
+						<div class="row pb-2">
+							<div class="col-3 col-sm-4 col-md-3">
+								<img class="rounded-circle" src="images/Ng-Chee-Meng.jpg" alt="Ng Chee Meng">
+							</div>
+							<div class="col-9 col-sm-8 col-md-9 my-auto">
+								<p>Ng Chee Meng</p>
+							</div>
+						</div>
+						<div class="row pb-2">
+							<div class="col-3 col-sm-4 col-md-3">
+								<img class="rounded-circle" src="images/Lam-Pin-Min.jpg" alt="Lam Pin Min">
+							</div>
+							<div class="col-9 col-sm-8 col-md-9 my-auto">
+								<p>Lam Pin Min</p>
+							</div>
+						</div>
+						<div class="row pb-2">
+							<div class="col-3 col-sm-4 col-md-3">
+								<img class="rounded-circle" src="images/Amrin-Amin.jpg" alt="Amrin Amin">
+							</div>
+							<div class="col-9 col-sm-8 col-md-9 my-auto">
+								<p>Amrin Amin</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-3 col-sm-4 col-md-3">
+								<img class="rounded-circle" src="images/Raymond-Lye-Hoong-Yip.jpg" alt="Raymond Lye">
+							</div>
+							<div class="col-9 col-sm-8 col-md-9 my-auto">
+								<p>Raymond Lye</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="row">
+					<div class="col-12 ml-auto mr-auto p-0 white-block">
+						<div class="ml-4 p-4">
+							<h3 class="pb-4">Event Timeline</h3>
+							<div id="timeline-chart"></div>	
+						</div>
+					</div>
+				</div>  
+					</div>
+				</div>
+			</div>
+			<div class='col-12 col-lg-4 sidebar'>
+				<div class="row">
+					<div class="col-12 col-sm-8 col-lg-12">
+						<div class="ml-4 p-4 blue-block">
+							
+							<div id="sengkang-map"></div>
+							
+						</div>
+					</div>
+					<div class="col-12 col-sm-4 col-lg-12">
+						<div class="ml-4 p-4">
+							<h3 class="pb-4">Voters' Demographic</h3>
+							<h4 class="pb-2">Age</h4>
+							<p class="pb-4 small">Middle-aged voters are the majority</p>
+							<div id="demographic-bar"></div>
+						</div>
+						<p class="text-right small">Data source: Elections Department Singapore, Singapore Department of Statistics</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="js/results-bar.js"></script>
+<script src="js/vote-pie.js"></script>
+<script src="js/sengkang-map2.js"></script>
+<script src="js/demographic-bar.js"></script>
+<script src="js/candidate-profile1.js"></script>
+<script src="js/timeline-chart.js"></script>
+
+</body>
+</html>

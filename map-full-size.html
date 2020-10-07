@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/5.1.5/turf.min.js"></script>
+<head>
+  
+</head>
+<body>
+  <div class="graph"></div>
+</body>
+<script>
+  var width = 700, height = 400;
+
+    var svg = d3.select(".graph").append("svg")
+            .attr("viewBox", "0 0 " + (width) + " " + (height))
+            //.style("max-width", "700px")
+
+      
+
+    d3.json("data/electoral-boundary-dataset.geo.json", function (error, mapData) {
+        var features = mapData.features;
+    
+    var projection = d3.geoMercator();
+        var path = d3.geoPath().projection(projection);
+    
+    var fixed = features.map(function(f) {
+      return turf.rewind(f,{reverse:true});
+    })
+    
+    console.log(fixed);
+    
+    projection.fitSize([width,height],{"type": "FeatureCollection","features":fixed})
+    
+    svg.append("g")
+                .attr("class", "region")
+                .selectAll("path")
+                .data(fixed)
+                .enter()
+                .append("path")
+                .attr("d", path)
+    });
+</script>
+</html>
